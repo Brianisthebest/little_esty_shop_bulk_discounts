@@ -127,5 +127,19 @@ RSpec.describe 'bulk discounts index', type: :feature do
         expect(page).to_not have_content("Quantity Threshold: #{@bulk_discount_2.quantity_threshold}")
       end
     end
+
+    describe 'User Story 9: Holidays' do
+      it 'will list the next 3 upcoming holidays' do
+        holidays = HolidaySearch.new.holidays
+
+        within "#holidays" do
+          holidays.each do |holiday|
+            expect(page).to have_content("Upcoming Holidays")
+            expect(page).to have_content(holiday.name)
+            expect(page).to have_content(holiday.date)
+          end
+        end
+      end
+    end
   end
 end
