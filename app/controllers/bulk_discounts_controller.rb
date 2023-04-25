@@ -20,7 +20,7 @@ class BulkDiscountsController < ApplicationController
     if @bulk_discount.save
       redirect_to merchant_bulk_discounts_path(@merchant)
     else
-      flash.alert = "Discount not created, please try again."
+      flash[:alert] = "Errors: #{error_message(@bulk_discount.errors)} "
 
       redirect_to new_merchant_bulk_discount_path(@merchant)
     end
@@ -34,6 +34,7 @@ class BulkDiscountsController < ApplicationController
     redirect_to merchant_bulk_discount_path(@merchant, @bulk_discount)
    else
     flash.alert = "Discount not updated, please try again."
+    flash[:alert] = "Errors: #{error_message(@bulk_discount.errors)} "
 
     redirect_to edit_merchant_bulk_discount_path(@merchant, @bulk_discount)
    end
