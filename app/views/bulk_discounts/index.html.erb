@@ -11,6 +11,13 @@
   </nav>
 </div>
 
+<div id="holidays">
+  <h3>Upcoming Holidays</h3>
+  <% @holidays.each do |holiday| %>
+    <p><%= holiday.name %>: <%= holiday.date %></p>
+  <% end %>
+</div>
+
 <% @bulk_discounts.each do |bulk_discount| %>
   <div id="bulk-discount-<%= bulk_discount.id %>">
     <%= link_to "Discount ID: #{bulk_discount.id} Show Page", merchant_bulk_discount_path(@merchant, bulk_discount) %>
