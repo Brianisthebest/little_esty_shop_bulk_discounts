@@ -20,7 +20,7 @@ RSpec.describe 'Bulk Discount New', type: :feature do
       click_button "Create Discount"
 
       expect(current_path).to eq(new_merchant_bulk_discount_path(@merchant_1))
-      expect(page).to have_content("Discount not created, please try again.")
+      expect(page).to have_content("Errors: Percentage discount must be greater than or equal to 0, Quantity threshold must be greater than 0")
     end
 
     it 'when I fill in the form with valid data, I am redirected back to the bulk discounts index page, and I see my new discount' do
