@@ -25,7 +25,7 @@ RSpec.describe 'Bulk Discount Edit', type: :feature do
       fill_in :quantity_threshold, with: -10
       
       click_button "Edit Discount"
-  save_and_open_page
+
       expect(current_path).to eq(edit_merchant_bulk_discount_path(@merchant_1, @bulk_discount_1))
       expect(page).to have_content("Errors: Percentage discount must be greater than or equal to 0, Quantity threshold must be greater than 0")
       expect(find_field(:percentage_discount).value).to eq(@bulk_discount_1.percentage_discount.to_s)
