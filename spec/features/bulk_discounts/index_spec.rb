@@ -135,8 +135,7 @@ RSpec.describe 'bulk discounts index', type: :feature do
         within "#holidays" do
           holidays.each do |holiday|
             expect(page).to have_content("Upcoming Holidays")
-            expect(page).to have_content(holiday.name)
-            expect(page).to have_content(holiday.date)
+            expect(page).to have_content("#{holiday.name}: #{holiday.date}")
           end
         end
       end

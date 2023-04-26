@@ -23,11 +23,11 @@ RSpec.describe 'Bulk Discount Edit', type: :feature do
     it 'when I fill in the form with invalid data, I am redirected back to the edit form' do
       fill_in :percentage_discount, with: -5
       fill_in :quantity_threshold, with: -10
-
+      
       click_button "Edit Discount"
 
       expect(current_path).to eq(edit_merchant_bulk_discount_path(@merchant_1, @bulk_discount_1))
-      expect(page).to have_content("Discount not updated, please try again.")
+      expect(page).to have_content("Errors: Percentage discount must be greater than or equal to 0, Quantity threshold must be greater than 0")
       expect(find_field(:percentage_discount).value).to eq(@bulk_discount_1.percentage_discount.to_s)
       expect(find_field(:quantity_threshold).value).to eq(@bulk_discount_1.quantity_threshold.to_s)
     end
